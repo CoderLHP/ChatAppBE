@@ -12,7 +12,7 @@ CREATE TABLE user(
 
 CREATE TABLE role(
     roleId INT(2) NOT NULL AUTO_INCREMENT,
-    rolename VARCHAR(255) NOT NULL,
+    roleName VARCHAR(255) NOT NULL,
     PRIMARY KEY(roleId)
 );
 
