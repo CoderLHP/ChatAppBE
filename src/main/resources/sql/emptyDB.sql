@@ -1,0 +1,36 @@
+CREATE DATABASE chatApp;
+
+USE chatApp;
+
+CREATE TABLE user(
+    id INT(8) NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    status VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE role(
+    id INT(2) NOT NULL AUTO_INCREMENT,
+    rolename VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE user_role(
+    id INT(8) NOT NULL AUTO_INCREMENT,
+    user_id INT(8) NOT NULL, 
+    role_id INT(2) NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT fk_userrole_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_userrole_role FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE massage(
+    id INT(8) NOT NULL AUTO_INCREMENT,
+    user_id INT(8),
+    time DATETIME NOT NULL,
+    content TEXT NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT fk_massage_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE SET NULL ON UPDATE CASCADE
+);
+
