@@ -30,5 +30,5 @@
         <mapping class="coder.entities.User" />
         <mapping class="coder.entities.UserRole"/>
          
-    </session-factory>
+    </session-factory> 
 </hibernate-configuration>

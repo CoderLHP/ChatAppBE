@@ -12,14 +12,14 @@ import coder.entities.*;
 import coder.connectionDB.HibernateUtils;
 
 public class TestDB {
+    public static Session session;
     public static void main(String args[]) {
         try {
-            var session = (Session) HibernateUtils.getSessionFactory().openSession();
+            session = (Session) HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            List<User> users = session.createQuery("FROM User", User.class).list();
-            for (var user:users) session.delete(user);
+            
             User user = new User();
-            user.setUsername("chung");
+            user.setUsername("username");
             user.setPassword("password");
             user.setStatus("status");
             session.save(user);
@@ -32,10 +32,11 @@ public class TestDB {
             userRole.setRole(role);
             userRole.setUser(user);
             session.save(userRole);
-            
+
             session.getTransaction().commit();
         } catch (Exception e) {
             //TODO: handle exception
+            //session.getTransaction().rollback();
         }
     }
 }

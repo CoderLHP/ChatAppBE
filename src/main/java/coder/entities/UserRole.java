@@ -17,7 +17,7 @@ import lombok.Data;
 public class UserRole {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "userRoleId", length = 8)
+    @Column (name = "userRoleId")
     private int userRoleId;
 
     @ManyToOne

@@ -20,7 +20,7 @@ public class Message {
     
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "messageId", length = 8)
+    @Column (name = "messageId")
     private int messageId;
 
     @ManyToOne
